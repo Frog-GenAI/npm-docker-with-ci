@@ -26,6 +26,14 @@ jobs:
       with:
         url: https://yaronl55.jfrog.io
     
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: 📦 Install dependencies
+      run: npm ci --omit=dev
+    
     - name: 📝 Extract metadata
       id: meta
       uses: docker/metadata-action@v5

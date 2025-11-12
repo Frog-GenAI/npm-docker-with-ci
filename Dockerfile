@@ -5,8 +5,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm i --omit=dev
+# Copy node_modules from local build
+COPY node_modules/ ./node_modules/
 
 # Copy application code
 COPY src/ ./src/
