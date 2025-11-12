@@ -5,8 +5,11 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
+# Configure npm to use JFrog Fly registry
+RUN npm config set registry https://yaronl55.jfrog.io/artifactory/api/npm/npm/
+
 # Install dependencies
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy application code
 COPY src/ ./src/
