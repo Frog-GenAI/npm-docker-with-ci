@@ -32,6 +32,14 @@ jobs:
     - name: 🧪 Run tests
       run: npm test
     
+    - name: 🔢 Bump version
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        npm version patch --no-git-tag-version
+        NEW_VERSION=$(node -p "require('./package.json').version")
+        echo "📦 New version: $NEW_VERSION"
+    
     - name: 📤 Publish to npm
       run: npm publish
 
