@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM yaronl55.jfrog.io/docker/node:18-alpine
 
 WORKDIR /app
 

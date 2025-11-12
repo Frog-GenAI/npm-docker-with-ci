@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: docker.io
-  IMAGE_NAME: froggenai/npm-docker-example
+  REGISTRY: yaronl55.jfrog.io
+  IMAGE_NAME: docker/froggenai/npm-docker-example
 
 jobs:
   build-and-push:
@@ -15,17 +15,16 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
     
     steps:
     - name: 📥 Checkout code
       uses: actions/checkout@v4
     
-    - name: 🔐 Log in to Docker Hub
-      uses: docker/login-action@v3
+    - name: Setup JFrog Fly
+      uses: jfrog/fly-action@v1
       with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        url: https://yaronl55.jfrog.io
     
     - name: 📝 Extract metadata
       id: meta
