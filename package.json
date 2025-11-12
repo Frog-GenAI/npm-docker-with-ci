@@ -1,6 +1,6 @@
 {
   "name": "@frog-genai/npm-docker-example",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Simple Express.js API demonstrating npm publishing and Docker builds with GitHub Actions",
   "main": "src/index.js",
   "scripts": {

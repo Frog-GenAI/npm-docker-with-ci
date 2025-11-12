@@ -9,7 +9,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
     
     steps:
@@ -39,6 +39,9 @@ jobs:
         npm version patch --no-git-tag-version
         NEW_VERSION=$(node -p "require('./package.json').version")
         echo "📦 New version: $NEW_VERSION"
+        git add package.json
+        git commit -m "Bump version to $NEW_VERSION [skip ci]"
+        git push
     
     - name: 📤 Publish to npm
       run: npm publish
